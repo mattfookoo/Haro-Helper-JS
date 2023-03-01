@@ -27,13 +27,27 @@ kitsController.getAllKits = async (req, res) => {
     }
   };
 
-  kitsController.getKitByName = async (req, res) => {
+  kitsController.getKitsByName = async (req, res) => {
     try {
-      const kit = await KitsModel.findOne({ kit: req.params.kit });
-      if (!kit) {
+      console.log(req.params);
+      const kits = await KitsModel.find({ kit: req.params.kit });
+      if (!kits) {
         return res.status(404).json({ message: 'Kit not found' });
       }
-      res.json(kit);
+      res.json(kits);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Server error' });
+    }
+  };
+
+  kitsController.getKitsByGrade = async (req, res) => {
+    try {
+      const kits = await KitsModel.find({ grade: req.params.grade });
+      if (!kits) {
+        return res.status(404).json({ message: 'Kit not found' });
+      }
+      res.json(kits);
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: 'Server error' });
