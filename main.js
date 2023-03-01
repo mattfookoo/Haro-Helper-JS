@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const db = require('./src/server/models/db.js');
-const kitsController = require('./src/server/controllers/kitsController.js');
+const db = require('./server/models/db.js');
+const kitsController = require('./server/controllers/kitsController.js');
 
 const PORT = 3000;
 
