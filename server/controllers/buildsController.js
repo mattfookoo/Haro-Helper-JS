@@ -25,7 +25,8 @@ buildsController.addToBuild = async (req, res) => {
           price: req.body.price,
           series: req.body.series,
           verka: req.body.verka,
-          completed: false // set completed to false
+          completed: false, // set completed to false
+          createdAt: new Date() // set createdAt to current date
         });
         await toBuild.save();
         console.log('Kit added to toBuild collection!');

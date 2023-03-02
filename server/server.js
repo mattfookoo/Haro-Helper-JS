@@ -16,7 +16,6 @@ app.use(cors());
 const kitsRouter = express.Router();
 app.use('/kits', kitsRouter);
 
-
 kitsRouter.post('/', kitsController.createKit);
 kitsRouter.get('/', kitsController.getAllKits);
 kitsRouter.get('/:kit', kitsController.getKitsByName);
@@ -25,6 +24,7 @@ kitsRouter.get('/grade/:grade', kitsController.getKitsByGrade);
 
 const buildsRouter = express.Router();
 app.use('/builds', buildsRouter);
+
 buildsRouter.post('/tobuild', buildsController.addToBuild);
 buildsRouter.get('/', buildsController.getAllBuilds);
 buildsRouter.delete('/:id', buildsController.deleteBuild);

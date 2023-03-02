@@ -15,7 +15,7 @@ const App = () => {
 
     <div>
       <div className='header-wrapper'>
-        <div classname='header'>
+        <div className='header'>
           <h1>Haro Helper</h1>
         </div>
       </div>

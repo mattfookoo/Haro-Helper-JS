@@ -53,7 +53,7 @@ const ToBuildCards = () => {
   };
 
   const gradeOptions = ['all', 'PG', 'MG', 'RG', 'HG', 'EG', 'SD'];
-  const sortedKits = kits.sort((a, b) => a.kit.localeCompare(b.kit));
+  const sortedKits = kits.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
 
   return (
     <div>
@@ -72,6 +72,7 @@ const ToBuildCards = () => {
         {sortedKits.map((kit) => (
           <div key={kit._id} className={`kit-card ${loaded ? 'loaded' : ''}`}>
             <h3>{kit.kit}</h3>
+            <button className='delete-button' onClick={() => handleDelete(kit._id)}>Delete</button>
             <div className="kit-card-content">
               <label>
                 Completed:{' '}
@@ -81,7 +82,7 @@ const ToBuildCards = () => {
                   onChange={() => handleCompletedChange(kit._id)}
                 />
               </label>
-              <button onClick={() => handleDelete(kit._id)}>Delete</button>
+              <p><b>Created at:</b> {new Date(kit.createdAt).toLocaleDateString()}</p>
               <p><b>Grade:</b> {kit.grade}</p>
               <p><b>Ver.ka:</b> {kit.verka ? 'Yes' : 'No'}</p>
               <p><b>Series:</b> {kit.series}</p>

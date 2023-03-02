@@ -31,11 +31,12 @@ h2 {
 .kit-card h3 {
   position: sticky;
   top: 0;
-  background-color: inherit;
   z-index: 1;
   font-size: 1rem;
+  margin-top: 20px;
   margin-bottom: 5px;
   font-family: 'Plavsky', sans-serif;
+  background-color: inherit;
 }
 
 .kit-card-content {
@@ -62,13 +63,14 @@ h2 {
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: red;
+  background-color: rgb(117, 33, 33);
   color: white;
   padding: 5px;
   border: none;
-  border-radius: 50%;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 0.7rem;
+  clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0 50%);
+  font-family: 'Plavsky', sans-serif;
 }
 
 /* Animation for delete button */
