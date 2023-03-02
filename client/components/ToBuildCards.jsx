@@ -50,15 +50,15 @@ const ToBuildCards = () => {
           ))}
         </select>
       </div>
-      <div className="tobuild-cards">
+      <div className="kit-cards">
         {kits.map((kit) => (
           <div
             key={kit._id}
-            className={`tobuild-card ${loaded ? 'loaded' : ''}`}
+            className={`kit-card ${loaded ? 'loaded' : ''}`}
             onClick={() => handleCardClick(kit)}
           >
             <h2>{kit.kit}</h2>
-            <div className="tobuild-card-content">
+            <div className="kit-card-content">
               <p>Price: ${kit.price}</p>
               <p>Grade: {kit.grade}</p>
               <p>Ver.ka: {kit.verka ? 'Yes' : 'No'}</p>

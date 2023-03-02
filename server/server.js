@@ -16,16 +16,10 @@ app.use(cors());
 const kitsRouter = express.Router();
 app.use('/kits', kitsRouter);
 
-// Create a kit in the database
+
 kitsRouter.post('/', kitsController.createKit);
-
-// Get all kits from the database
 kitsRouter.get('/', kitsController.getAllKits);
-
-//Lookup by Kit
 kitsRouter.get('/:kit', kitsController.getKitsByName);
-
-//Lookup by grade
 kitsRouter.get('/grade/:grade', kitsController.getKitsByGrade);
 
 
