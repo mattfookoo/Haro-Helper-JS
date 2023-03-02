@@ -11,22 +11,29 @@ const App = () => {
   };
 
   return (
+    
+
     <div>
+      <div className='header-wrapper'>
+        <div classname='header'>
+          <h1>Haro Helper</h1>
+        </div>
+      </div>
       {showPopup && (
         <div className="popup">
           <KitCards />
           <button onClick={togglePopup}>Close</button>
         </div>
       )}
-      <div className="cards-container">
-        <ToBuildCards />
-        {!showPopup && (
+      {!showPopup && (
+        <div className="cards-container">
+          <ToBuildCards />
           <button className="add-button" onClick={togglePopup}>
             +
           </button>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
-}
+      }
 export default App;

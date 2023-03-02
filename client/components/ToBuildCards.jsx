@@ -52,11 +52,12 @@ const ToBuildCards = () => {
     }
   };
 
-  const gradeOptions = ['All', 'PG', 'MG', 'RG', 'HG', 'EG', 'SD'];
+  const gradeOptions = ['all', 'PG', 'MG', 'RG', 'HG', 'EG', 'SD'];
+  const sortedKits = kits.sort((a, b) => a.kit.localeCompare(b.kit));
 
   return (
     <div>
-      <h1>Backlog</h1>
+      <h2>Backlog</h2>
       <div>
         <label htmlFor="gradeSelect">Select grade:</label>{' '}
         <select id="gradeSelect" value={selectedGrade} onChange={handleGradeChange}>
@@ -68,9 +69,9 @@ const ToBuildCards = () => {
         </select>
       </div>
       <div className="kit-cards">
-        {kits.map((kit) => (
+        {sortedKits.map((kit) => (
           <div key={kit._id} className={`kit-card ${loaded ? 'loaded' : ''}`}>
-            <h2>{kit.kit}</h2>
+            <h3>{kit.kit}</h3>
             <div className="kit-card-content">
               <label>
                 Completed:{' '}
@@ -80,11 +81,10 @@ const ToBuildCards = () => {
                   onChange={() => handleCompletedChange(kit._id)}
                 />
               </label>
-              <p>Price: ${kit.price}</p>
-              <p>Grade: {kit.grade}</p>
-              <p>Ver.ka: {kit.verka ? 'Yes' : 'No'}</p>
-              <p>Series: {kit.series}</p>
               <button onClick={() => handleDelete(kit._id)}>Delete</button>
+              <p><b>Grade:</b> {kit.grade}</p>
+              <p><b>Ver.ka:</b> {kit.verka ? 'Yes' : 'No'}</p>
+              <p><b>Series:</b> {kit.series}</p>
             </div>
           </div>
         ))}

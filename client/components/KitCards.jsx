@@ -23,6 +23,7 @@ const KitCards = () => {
     };
     fetchKits();
 
+
     return () => {
       setLoaded(false);
     };
@@ -43,11 +44,12 @@ const KitCards = () => {
     }
   };
   
-  const gradeOptions = ['All', 'PG', 'MG', 'RG', 'HG', 'EG', 'SD'];
+  const gradeOptions = ['all', 'PG', 'MG', 'RG', 'HG', 'EG', 'SD'];
+  const sortedKits = kits.sort((a, b) => a.kit.localeCompare(b.kit));
 
   return (
     <div>
-      <h1>Choose a Kit to Add!</h1>
+      <h2>Choose a Kit to Add!</h2>
       <div>
         <label htmlFor="gradeSelect">Select grade:</label>{' '}
         <select id="gradeSelect" value={selectedGrade} onChange={handleGradeChange}>
@@ -59,13 +61,13 @@ const KitCards = () => {
         </select>
       </div>
       <div className="kit-cards">
-        {kits.map((kit) => (
+        {sortedKits.map((kit) => (
           <div
             key={kit._id}
             className={`kit-card ${loaded ? 'loaded' : ''}`}
             onClick={() => handleCardClick(kit)}
           >
-            <h2>{kit.kit}</h2>
+            <h3>{kit.kit}</h3>
             <div className="kit-card-content">
               <p>Price: ${kit.price}</p>
               <p>Grade: {kit.grade}</p>
