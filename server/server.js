@@ -25,7 +25,7 @@ kitsRouter.get('/', kitsController.getAllKits);
 kitsRouter.get('/:kit', kitsController.getKitsByName);
 
 //Lookup by grade
-kitsRouter.get('/:grade', kitsController.getKitsByGrade);
+kitsRouter.get('/grade/:grade', kitsController.getKitsByGrade);
 
 
 // Unknown route handler
