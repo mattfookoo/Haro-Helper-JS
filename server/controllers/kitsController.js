@@ -17,6 +17,7 @@ kitsController.createKit = async (req, res) => {
     }
   };
 
+
 kitsController.getAllKits = async (req, res) => {
     try {
       const kits = await KitsModel.find();

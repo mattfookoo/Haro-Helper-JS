@@ -3,6 +3,7 @@ const cors = require('cors');
 const app = express();
 const db = require('./models/db.js');
 const kitsController = require('./controllers/kitsController.js');
+const buildsController = require('./controllers/buildsController.js');
 
 const PORT = 3000;
 
@@ -26,6 +27,12 @@ kitsRouter.get('/:kit', kitsController.getKitsByName);
 
 //Lookup by grade
 kitsRouter.get('/grade/:grade', kitsController.getKitsByGrade);
+
+
+const buildsRouter = express.Router();
+app.use('/builds', buildsRouter);
+buildsRouter.post('/tobuild', buildsController.addToBuild);
+buildsRouter.get('/', buildsController.getAllBuilds);
 
 
 // Unknown route handler

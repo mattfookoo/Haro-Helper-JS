@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import KitCards from './components/KitCards.jsx';
+import ToBuildCards from './components/ToBuildCards.jsx';
 
 const App = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -19,6 +20,7 @@ const App = () => {
           <button onClick={togglePopup}>Close</button>
         </div>
       )}
+      <ToBuildCards />
     </div>
   );
 };

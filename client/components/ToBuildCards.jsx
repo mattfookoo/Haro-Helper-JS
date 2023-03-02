@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './KitCards.css';
 
-const KitCards = () => {
+const ToBuildCards = () => {
   const [kits, setKits] = useState([]);
   const [selectedGrade, setSelectedGrade] = useState('all');
   const [loaded, setLoaded] = useState(false);
@@ -10,11 +10,12 @@ const KitCards = () => {
   useEffect(() => {
     const fetchKits = async () => {
       try {
-        let url = 'http://localhost:3000/kits';
+        let url = 'http://localhost:3000/builds';
         if (selectedGrade !== 'all') {
           url += `/grade/${selectedGrade}`;
         }
         const response = await axios.get(url);
+        console.log('response:', response); // Debugging line
         setKits(response.data);
         setLoaded(true);
       } catch (err) {
@@ -28,24 +29,17 @@ const KitCards = () => {
     };
   }, [selectedGrade]);
 
+  console.log('kits:', kits); // Debugging line
+
   const handleGradeChange = (event) => {
     setSelectedGrade(event.target.value);
   };
 
-  const handleCardClick = async (kit) => {
-    console.log(kit);
-    try {
-      const response = await axios.post('http://localhost:3000/builds/tobuild', kit);
-      console.log(response.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
   const gradeOptions = ['all', 'PG', 'MG', 'RG', 'HG', 'EG', 'SD'];
 
   return (
     <div>
-      <h1>Kits</h1>
+      <h1>Backlog</h1>
       <div>
         <label htmlFor="gradeSelect">Select grade:</label>{' '}
         <select id="gradeSelect" value={selectedGrade} onChange={handleGradeChange}>
@@ -56,21 +50,20 @@ const KitCards = () => {
           ))}
         </select>
       </div>
-      <div className="kit-cards">
+      <div className="tobuild-cards">
         {kits.map((kit) => (
           <div
             key={kit._id}
-            className={`kit-card ${loaded ? 'loaded' : ''}`}
+            className={`tobuild-card ${loaded ? 'loaded' : ''}`}
             onClick={() => handleCardClick(kit)}
           >
             <h2>{kit.kit}</h2>
-            <div className="kit-card-content">
+            <div className="tobuild-card-content">
               <p>Price: ${kit.price}</p>
               <p>Grade: {kit.grade}</p>
               <p>Ver.ka: {kit.verka ? 'Yes' : 'No'}</p>
               <p>Series: {kit.series}</p>
-              <p>Description: {kit.description}</p>
-              <p>Notes: {kit.notes}</p>
+              <p>Completed: {kit.completed ? 'Yes' : 'No'}</p>
               
             </div>
           </div>
@@ -80,4 +73,4 @@ const KitCards = () => {
   );
 };
 
-export default KitCards;
+export default ToBuildCards;
