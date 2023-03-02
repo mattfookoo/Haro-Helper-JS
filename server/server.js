@@ -27,7 +27,7 @@ const buildsRouter = express.Router();
 app.use('/builds', buildsRouter);
 buildsRouter.post('/tobuild', buildsController.addToBuild);
 buildsRouter.get('/', buildsController.getAllBuilds);
-
+buildsRouter.delete('/:id', buildsController.deleteBuild);
 
 // Unknown route handler
 app.use((req, res) => res.sendStatus(404));

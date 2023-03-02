@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './KitCards.css';
+import '../styling/KitCards.css';
 
 const KitCards = () => {
   const [kits, setKits] = useState([]);
@@ -37,15 +37,17 @@ const KitCards = () => {
     try {
       const response = await axios.post('http://localhost:3000/builds/tobuild', kit);
       console.log(response.data);
+      window.location.reload(); // Refresh the website after the API call is made
     } catch (err) {
       console.error(err);
     }
   };
-  const gradeOptions = ['all', 'PG', 'MG', 'RG', 'HG', 'EG', 'SD'];
+  
+  const gradeOptions = ['All', 'PG', 'MG', 'RG', 'HG', 'EG', 'SD'];
 
   return (
     <div>
-      <h1>Kits</h1>
+      <h1>Choose a Kit to Add!</h1>
       <div>
         <label htmlFor="gradeSelect">Select grade:</label>{' '}
         <select id="gradeSelect" value={selectedGrade} onChange={handleGradeChange}>
