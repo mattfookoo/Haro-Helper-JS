@@ -11,7 +11,7 @@ h2 {
   position: relative;
   width: 200px;
   height: 200px;
-  border: 1px solid rgb(87, 87, 87);
+  border: 1px solid rgb(184, 184, 184);
   margin: 10px;
   padding: 10px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -45,7 +45,14 @@ h2 {
 
 .kit-card p {
   margin: 10px 0; /* adds 10px spacing between top and bottom */
-  font-size: 1rem;
+  font-size: .8rem;
+  font-family: 'arial', sans-serif;
+}
+
+.kit-card label {
+  margin: 10px 0; /* adds 10px spacing between top and bottom */
+  font-size: .8rem;
+  font-family: 'arial', sans-serif;
 }
 
 .kit-card.loaded {
@@ -76,4 +83,13 @@ h2 {
 /* Animation for delete button */
 .kit-card .delete-button:hover {
   background-color: darkred;
+}
+
+.kit-card::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.kit-card::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.1);
+  outline: 1px solid slategrey;
 }
