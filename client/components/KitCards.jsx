@@ -6,6 +6,7 @@ const KitCards = () => {
   const [kits, setKits] = useState([]);
   const [selectedGrade, setSelectedGrade] = useState('all');
   const [loaded, setLoaded] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchKits = async () => {
@@ -22,7 +23,6 @@ const KitCards = () => {
       }
     };
     fetchKits();
-
 
     return () => {
       setLoaded(false);
@@ -43,9 +43,15 @@ const KitCards = () => {
       console.error(err);
     }
   };
-  
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   const gradeOptions = ['all', 'PG', 'MG', 'RG', 'HG', 'EG', 'SD'];
-  const sortedKits = kits.sort((a, b) => a.kit.localeCompare(b.kit));
+  const sortedKits = kits
+    .filter((kit) => kit.kit.toLowerCase().includes(searchTerm.toLowerCase()))
+    .sort((a, b) => a.kit.localeCompare(b.kit));
 
   return (
     <div>
@@ -59,6 +65,9 @@ const KitCards = () => {
             </option>
           ))}
         </select>
+      </div>
+      <div>
+        <input type="text" placeholder="Search by kit" value={searchTerm} onChange={handleSearch} />
       </div>
       <div className="kit-cards">
         {sortedKits.map((kit) => (
@@ -75,7 +84,6 @@ const KitCards = () => {
               <p>Series: {kit.series}</p>
               <p>Description: {kit.description}</p>
               <p>Notes: {kit.notes}</p>
-              
             </div>
           </div>
         ))}
