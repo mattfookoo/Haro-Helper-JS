@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ToBuildCards from './components/ToBuildCards.jsx';
 import KitCards from './components/KitCards.jsx';
+import HaroReminder from './components/HaroReminder.jsx';
 import './styling/App.css';
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
           </button>
         </div>
       )}
+      <HaroReminder />
     </div>
   );
       }
